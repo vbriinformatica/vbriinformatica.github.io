@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta property="og:title" content="VBRI Informática | Especialistas em Tecnologia">
+  <meta property="og:description" content="Suporte técnico, montagem de alta performance e manutenção. 20 Anos de Excelência em Santo Antônio da Patrulha.">
+  <meta property="og:type" content="website">
+
+  <title>VBRI Informática | 20 Anos de Excelência em Tecnologia</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* -----------------------------------------------------------
+       PALETA E ESTILOS - VBRI INFORMÁTICA
+       ----------------------------------------------------------- */
+    :root {
+      --bg-deep: #02050b;       /* Fundo geral escuro e sólido do centro */
+      --bg-a4: rgba(10, 15, 29, 0.88); /* Bloco central translúcido e elegante */
+      --bg-card: #131c31;       /* Fundo dos cartões internos */
+      --text-main: #f8fafc;     /* Texto principal */
+      --text-muted: #94a3b8;    /* Texto secundário */
+      
+      /* Cores VBRI Tech */
+      --accent-blue: #38bdf8;
+      --accent-cyan: #00f2fe;
+      --accent-gold: #facc15;   /* Cor de destaque para as estrelas do Google */
+      --accent-glow: rgba(0, 242, 254, 0.25);
+      --border-color: #1e293b;
+      --border-highlight: #334155;
+      --whatsapp-green: #25d366;
+      --whatsapp-hover: #1ebd56;
+      
+      --font-mono: 'Roboto Mono', 'Courier New', monospace;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Otimização global de carregamento de imagens (evita pulos no layout) */
+    img {
+      content-visibility: auto;
+      display: block;
+    }
+
+    /* -----------------------------------------------------------
+       FUNDO COM IMAGENS LATERAIS E DEGRADÊ PARA O CENTRO
+       ----------------------------------------------------------- */
+    body {
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1rem; 
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      background-color: var(--bg-deep);
+    }
+
+    /* IMAGEM DA ESQUERDA: PC GAMER */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; 
+      width: 50vw;
+      height: 100vh;
+      z-index: -2;
+      opacity: 0.45;
+      background: url('https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=1000&auto=format&fit=crop') left center / cover no-repeat;
+      -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+      mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    }
+
+    /* IMAGEM DA DIREITA: HARDWARE / PROCESSADOR */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; right: 0; 
+      width: 50vw;
+      height: 100vh;
+      z-index: -2;
+      opacity: 0.45;
+      background: url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1000&auto=format&fit=crop') right center / cover no-repeat;
+      -webkit-mask-image: linear-gradient(to left, black 0%, transparent 100%);
+      mask-image: linear-gradient(to left, black 0%, transparent 100%);
+    }
+
+    /* -----------------------------------------------------------
+       CONTAINER CENTRAL (RESPONSIVO PARA SMARTPHONES, TABLETS E PCs)
+       ----------------------------------------------------------- */
+    .container-a4 {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 820px;
+      background-color: var(--bg-a4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--border-highlight);
+      border-radius: 12px;
+      padding: 2rem 1.25rem;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 242, 254, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @media (min-width: 768px) {
+      .container-a4 {
+        padding: 3rem 2.5rem; 
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container-a4::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    }
+
+    /* -----------------------------------------------------------
+       CABEÇALHO INSTITUCIONAL
+       ----------------------------------------------------------- */
+    header.company-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 2.25rem;
+    }
+
+    .mascot-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 120px;
+      height: 120px;
+    }
+
+    @media (min-width: 768px) {
+      .mascot-wrapper { width: 140px; height: 140px; }
+    }
+
+    .mascot-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid var(--accent-blue);
+      object-fit: cover;
+      background-color: var(--bg-card);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .mascot-img:hover {
+      transform: scale(1.05) rotate(3deg);
+      box-shadow: 0 0 30px var(--accent-cyan);
+    }
+
+    .experience-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      .experience-badge { font-size: 0.82rem; }
+    }
+
+    .experience-badge i { font-size: 1.1rem; }
+
+    .company-title {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--text-main);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .company-title { font-size: 2.2rem; }
+    }
+
+    .company-title span { color: var(--accent-blue); }
+
+    .tagline {
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+      .tagline { font-size: 0.9rem; }
+    }
+
+    .company-intro {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .company-intro { font-size: 1rem; }
+    }
+
+    .hashtag-highlight {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      letter-spacing: 1px;
+    }
+
+    /* -----------------------------------------------------------
+       SEÇÕES INSTITUCIONAIS E SEMÂNTICA
+       ----------------------------------------------------------- */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-blue);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .section-title { font-size: 1rem; }
+    }
+
+    .section-line {
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-highlight), transparent);
+    }
+
+    .content-box {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .content-box { padding: 1.75rem; }
+    }
+
+    .law-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .law-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .law-icon {
+      color: var(--accent-blue);
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .law-text h4 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .law-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* -----------------------------------------------------------
+       GRID DE SERVIÇOS E PROJETOS
+       ----------------------------------------------------------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .service-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.1);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .tech-tags {
+      list-style: none;
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .tech-tags li {
+      font-size: 0.8rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-family: var(--font-mono);
+    }
+
+    .tech-tags li i {
+      color: var(--accent-cyan);
+      font-size: 1rem;
+      margin-top: 1px;
+    }
+
+    /* Estilo para os cards da Galeria de Fotos */
+    .gallery-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .gallery-img-box {
+      width: 100%;
+      height: 190px;
+      background-color: #050b14;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #050b14; /* Cor de fundo enquanto carrega */
+      transition: opacity 0.5s ease-in; /* Suaviza o aparecimento */
+      opacity: 1;
+    }
+
+    .gallery-content {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    /* -----------------------------------------------------------
+       DIFERENCIAIS DE ATENDIMENTO
+       ----------------------------------------------------------- */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .diff-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .diff-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      transition: border-color 0.3s;
+    }
+    
+    .diff-card:hover {
+      border-color: var(--accent-cyan);
+    }
+
+    .diff-icon {
+      font-size: 2rem; 
+      color: var(--text-main);
+    }
+
+    .diff-card h4 {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--accent-cyan);
+    }
+
+    .diff-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* -----------------------------------------------------------
+       SEÇÃO: AVALIAÇÕES REAIS 5 ESTRELAS (GOOGLE)
+       ----------------------------------------------------------- */
+    .reviews-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .google-badge-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .google-score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .google-score i {
+      font-size: 1.8rem;
+      color: var(--accent-gold);
+    }
+
+    .google-score-text h4 {
+      font-size: 0.95rem;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+    }
+
+    .google-score-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .review-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .review-stars {
+      color: var(--accent-gold);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 3px;
+    }
+
+    .review-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .review-author {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-blue);
+      text-align: right;
+    }
+
+    /* -----------------------------------------------------------
+       SEÇÃO: REDES SOCIAIS OFICIAIS
+       ----------------------------------------------------------- */
+    .social-box {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .social-box { padding: 1.75rem; }
+    }
+
+    .social-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 500px;
+    }
+
+    .btn-linktree-banner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(135deg, #25d366 0%, #00f2fe 100%);
+      color: #000;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      .btn-linktree-banner { font-size: 0.95rem; }
+    }
+
+    .btn-linktree-banner i {
+      font-size: 1.3rem;
+    }
+
+    .btn-linktree-banner:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.4);
+    }
+
+    /* -----------------------------------------------------------
+       BOTÕES FLUTUANTES (WHATSAPP À DIREITA & FAQ À ESQUERDA)
+       ----------------------------------------------------------- */
+    .float-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      background-color: var(--whatsapp-green);
+      color: #fff; 
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      transition: transform 0.25s ease, background-color 0.25s ease;
+    }
+
+    @media (min-width: 768px) {
+      .float-whatsapp { bottom: 30px; right: 30px; width: 60px; height: 60px; font-size: 2.2rem;}
+    }
+
+    .float-whatsapp:hover {
+      transform: scale(1.1);
+      background-color: var(--whatsapp-hover);
+    }
+
+    /* Balão de FAQ Flutuante (Esquerda) */
+    .float-faq-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 99;
+    }
+
+    @media (min-width: 768px) {
+      .float-faq-container { bottom: 30px; left: 30px; }
+    }
+
+    .faq-toggle-btn {
+      background-color: var(--bg-card);
+      border: 2px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      transition: all 0.25s ease;
+    }
+
+    @media (min-width: 768px) {
+      .faq-toggle-btn { width: 60px; height: 60px; font-size: 2rem; }
+    }
+
+    .faq-toggle-btn:hover {
+      transform: scale(1.1);
+      background-color: rgba(0, 242, 254, 0.1);
+    }
+
+    /* Caixa de Perguntas do FAQ */
+    .faq-popup {
+      position: absolute;
+      bottom: 75px;
+      left: 0;
+      width: 300px;
+      max-height: 400px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeInPopup 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .faq-popup { width: 340px; bottom: 85px; }
+    }
+
+    @keyframes fadeInPopup {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .faq-header {
+      background-color: rgba(0, 242, 254, 0.1);
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .faq-header h3 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .faq-close-btn:hover {
+      color: var(--text-main);
+    }
+
+    .faq-body {
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-height: 310px;
+    }
+
+    .faq-question h4 {
+      font-size: 0.82rem;
+      color: var(--accent-blue);
+      font-family: var(--font-mono);
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .faq-question p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      padding-left: 17px;
+    }
+
+    /* -----------------------------------------------------------
+       RODAPÉ INSTITUCIONAL
+       ----------------------------------------------------------- */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      font-family: var(--font-mono);
+    }
+
+    footer span { color: var(--accent-blue); }
+  </style>
+</head>
+<body>
+
+  <div class="container-a4">
+    
+    <header class="company-header">
+      
+      <div class="mascot-wrapper">
+        <img class="mascot-img" src="img/logo.png" alt="Logótipo VBRI Informática">
+      </div>
+
+      <div class="experience-badge">
+        <i class="ph-fill ph-star"></i> 20 Anos de Excelência em Tecnologia
+      </div>
+
+      <div>
+        <h1 class="company-title">VBRI <span>INFORMÁTICA</span></h1>
+        <p class="tagline">// Soluções Técnicas & Suporte Especializado</p>
+      </div>
+
+      <p class="company-intro">
+        Atuando com excelência em suporte técnico, montagem de alta performance, manutenção e diagnósticos avançados de hardware e software. Compromisso, transparência e eficiência em cada atendimento.
+      </p>
+
+      <p class="hashtag-highlight">#depoderaosseusprojetos</p>
+
+    </header>
+
+    <main>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-user-focus"></i> [Sobre o Especialista]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="content-box">
+          <h3 style="color: var(--accent-blue); font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem;">
+            Vinicios Bourscheidt Rambor
+          </h3>
+          
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.8rem;">
+            Com 20 anos de atuação em Santo Antônio da Patrulha e região, minha especialidade é entregar máquinas que operem no limite da eficiência. Do suporte técnico impecável a projetos customizados de hardware — como montagens exclusivas em maletas industriais e adaptação de displays de telemetria —, o foco é sempre garantir performance térmica e estabilidade absoluta.
+          </p>
+
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+            Como entusiasta de hardware e através da vivência no cenário de jogos sob o perfil <strong>ALEMÃOBR GAMES</strong>, conheço na pele a exigência extrema dos motores gráficos atuais. Por isso, aplico ajustes finos de BIOS, controle rigoroso de consumo (TDP) e Curve Optimizer para garantir que o seu processador e a sua placa de vídeo entreguem o máximo de quadros por segundo, rodando frios e com total segurança.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-cpu"></i> [Especialidades & Serviços]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="service-card">
+            <h3><i class="ph ph-broom"></i> _Limpeza & Manutenção</h3>
+            <p>Prevenção de aquecimento e recuperação do desempenho do seu equipamento.</p>
+            <ul class="tech-tags">
+              <li><i class="ph ph-caret-right"></i> Limpeza interna e higienização</li>
+              <li><i class="ph ph-caret-right"></i> Troca de pasta térmica de alta condutividade</li>
+              <li><i class="ph ph-caret-right"></i> Resolução de barulhos e travamentos</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h3><i class="ph ph-wrench"></i> _Montagem & Upgrades</h3>
+            <p>Seu computador montado do zero ou atualizado com as melhores peças.</p>
+            <ul class="tech-tags">
+              <li><i class="ph ph-caret-right"></i> Montagem de PCs Gamer e Trabalho</li>
+              <li><i class="ph ph-caret-right"></i> Instalação de memórias, SSDs e GPUs</li>
+              <li><i class="ph ph-caret-right"></i> Organização de cabos e fluxo de ar ideal</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h3><i class="ph ph-rocket-launch"></i> _Otimização de Sistema</h3>
+            <p>Deixe o seu computador rápido, leve e sem travamentos no dia a dia.</p>
+            <ul class="tech-tags">
+              <li><i class="ph ph-caret-right"></i> Formatação limpa com backup seguro</li>
+              <li><i class="ph ph-caret-right"></i> Remoção de vírus e malwares</li>
+              <li><i class="ph ph-caret-right"></i> Otimização de boot e Windows</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h3><i class="ph ph-wifi-high"></i> _Suporte & Redes</h3>
+            <p>Soluções práticas para problemas de conexão e cabeamento técnico.</p>
+            <ul class="tech-tags">
+              <li><i class="ph ph-caret-right"></i> Configuração de roteadores e repetidores</li>
+              <li><i class="ph ph-caret-right"></i> Otimização do sinal Wi-Fi</li>
+              <li><i class="ph ph-caret-right"></i> Diagnóstico de falhas de internet</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-images"></i> [Projetos & Modificações]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="img/projeto-maleta-de-ferramentas.jpg" alt="PC na Maleta Vonder">
+            </div>
+            <div class="gallery-content">
+              <h3 style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-toolbox"></i> Setup Portátil Maleta Vonder
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45;">
+                Engenharia criativa: sistema funcional construído diretamente no chassi de uma maleta de ferramentas Vonder, garantindo mobilidade extrema sem perder a robustez térmica.
+              </p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="img/criacao-tela-telemetria.jpg" alt="Display de Telemetria">
+            </div>
+            <div class="gallery-content">
+              <h3 style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-monitor-pulse"></i> Painel de Telemetria Custom
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45;">
+                Criação de display externo dedicado monitorando temperaturas, uso de CPU/GPU e frequências do setup em tempo real para controle absoluto durante o gameplay.
+              </p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="img/montagem-pc-gamer.jpg" alt="Montagem PC Gamer Premium">
+            </div>
+            <div class="gallery-content">
+              <h3 style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-game-controller"></i> Montagem Gamer Premium
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45;">
+                Montagem de setups de alta performance com fluxo de ar planejado, sincronização ARGB e otimização de BIOS para extrair o máximo de quadros por segundo.
+              </p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="img/organizacao-de-cabos.jpg" alt="Cable Management Impecável">
+            </div>
+            <div class="gallery-content">
+              <h3 style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-git-merge"></i> Cable Management Impecável
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45;">
+                Organização profissional dos cabos na parte traseira do gabinete. Evita acúmulo de poeira, facilita manutenções futuras e garante uma estética limpa e profissional.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-star-four"></i> [Diferenciais do Atendimento]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="diff-grid">
+          <div class="diff-card">
+            <i class="ph ph-camera diff-icon"></i>
+            <h4>Acompanhamento</h4>
+            <p>Envio de registros em foto e vídeo durante o processo.</p>
+          </div>
+
+          <div class="diff-card">
+            <i class="ph ph-lightning diff-icon"></i>
+            <h4>Diagnóstico Prático</h4>
+            <p>Avaliação transparente sem termos confusos ou taxas surpresa.</p>
+          </div>
+
+          <div class="diff-card">
+            <i class="ph ph-shield-check diff-icon"></i>
+            <h4>Garantia Técnica</h4>
+            <p>Segurança e suporte garantido em todos os serviços aplicados.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-star"></i> [O Que Dizem Nossos Clientes]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="reviews-container">
+          <div class="google-badge-box">
+            <div class="google-score">
+              <i class="ph-fill ph-google-logo"></i>
+              <div class="google-score-text">
+                <h4>5.0 Estrelas no Google</h4>
+                <p>Avaliações reais de clientes atendidos</p>
+              </div>
+            </div>
+            <div style="color: var(--accent-gold); display: flex; gap: 4px; font-size: 1.1rem;">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="review-text">
+              "Profissional extremamente competente e transparente. Mandou fotos de todo o processo de limpeza e troca de peças do meu notebook. Serviço impecável em Santo Antônio da Patrulha!"
+            </p>
+            <span class="review-author">— Cliente Verificado Google</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="review-text">
+              "Lugar confiável demais. Montou meu PC gamer com um cable management absurdo de limpo e otimizou a BIOS. O computador roda super frio e liso. Recomendo de olhos fechados!"
+            </p>
+            <span class="review-author">— Cliente Verificado Google</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-scales"></i> [Conduta & Amparo Legal]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="content-box">
+          <ul class="law-list">
+            <li class="law-item">
+              <i class="ph ph-file-lock law-icon"></i>
+              <div class="law-text">
+                <h4>Proteção de Dados e Privacidade (LGPD - Lei nº 13.709/2018)</h4>
+                <p>Garantimos sigilo absoluto sobre os dados contidos nos dispositivos sob nossa custódia. Nenhuma informação pessoal ou arquivo é acessado, armazenado ou compartilhado sem prévia autorização do cliente.</p>
+              </div>
+            </li>
+
+            <li class="law-item">
+              <i class="ph ph-handshake law-icon"></i>
+              <div class="law-text">
+                <h4>Código de Defesa do Consumidor (CDC - Lei nº 8.078/1990)</h4>
+                <p>Trabalhamos com total transparência em orçamentos, prazos e termos de garantia técnica dos serviços prestados, assegurando os direitos do consumidor em todas as etapas do atendimento.</p>
+              </div>
+            </li>
+
+            <li class="law-item">
+              <i class="ph ph-certificate law-icon"></i>
+              <div class="law-text">
+                <h4>Conformidade Fiscal e MEI (Lei Complementar nº 123/2006)</h4>
+                <p>Empresa devidamente regularizada sob o enquadramento de Microempreendedor Individual (MEI), atuando dentro dos padrões legais e fiscais vigentes.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2 class="section-title"><i class="ph ph-share-network"></i> [Conecte-se às Redes Sociais]</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="social-box">
+          <p>Acesse nossa central de links para acompanhar conteúdos, projetos, fotos de bancada e canais diretos de contato.</p>
+          
+          <a href="https://linktr.ee/vbriinformatica" target="_blank" class="btn-linktree-banner">
+            <i class="ph-bold ph-link"></i> ACESSAR LINKTREE DA VBRI
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 <span>VBRI INFORMÁTICA</span> • Todos os direitos reservados</p>
+      <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem;">Página Institucional Oficial • Santo Antônio da Patrulha / RS</p>
+    </footer>
+
+  </div>
+
+  <div class="float-faq-container">
+    <button class="faq-toggle-btn" onclick="toggleFaq()" title="Dúvidas Frequentes">
+      <i class="ph-fill ph-chat-teardrop-dots"></i>
+    </button>
+    
+    <div class="faq-popup" id="faqPopup">
+      <div class="faq-header">
+        <h3><i class="ph ph-question"></i> Dúvidas Frequentes</h3>
+        <button class="faq-close-btn" onclick="toggleFaq()">&times;</button>
+      </div>
+      <div class="faq-body">
+        
+        <div class="faq-question">
+          <h4><i class="ph ph-caret-right"></i> Como solicito orçamento?</h4>
+          <p>Basta clicar no botão verde do WhatsApp na tela e falar direto comigo para alinharmos os detalhes.</p>
+        </div>
+
+        <div class="faq-question">
+          <h4><i class="ph ph-caret-right"></i> Qual o prazo médio?</h4>
+          <p>Limpezas e manutenções comuns costumam ficar prontas em até 24 a 48h dependendo da complexidade.</p>
+        </div>
+
+        <div class="faq-question">
+          <h4><i class="ph ph-caret-right"></i> Atende a domicílio?</h4>
+          <p>Trabalhamos com foco em bancada técnica estruturada para garantir precisão e segurança máxima nos testes.</p>
+        </div>
+
+        <div class="faq-question">
+          <h4><i class="ph ph-caret-right"></i> Os serviços têm garantia?</h4>
+          <p>Sim! Todos os serviços de manutenção e peças aplicadas possuem total respaldo e garantia técnica.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/5551996710087?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VBRI%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="float-whatsapp" title="Falar no WhatsApp da VBRI">
+    <i class="ph-fill ph-whatsapp-logo"></i>
+  </a>
+
+  <script>
+    function toggleFaq() {
+      const popup = document.getElementById('faqPopup');
+      if (popup.style.display === 'flex') {
+        popup.style.display = 'none';
+      } else {
+        popup.style.display = 'flex';
+      }
+    }
+
+    // Fecha o FAQ se o usuário clicar fora dele
+    window.onclick = function(event) {
+      const popup = document.getElementById('faqPopup');
+      const btn = document.querySelector('.faq-toggle-btn');
+      if (!popup.contains(event.target) && !btn.contains(event.target)) {
+        popup.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
